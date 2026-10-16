@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>Speakly – Aprende inglés</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7fb;--card:#fff;--tx:#1d2433;--mu:#6b7385;--ac:#6c5ce7;--ok:#1fa97a;--no:#e5484d;--bd:#e3e6ee}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141c;--card:#1c2030;--tx:#eef0f7;--mu:#98a0b5;--ac:#8b7dff;--ok:#38c996;--no:#ff6b70;--bd:#2c3248}}
+:root[data-theme="dark"]{--bg:#12141c;--card:#1c2030;--tx:#eef0f7;--mu:#98a0b5;--ac:#8b7dff;--ok:#38c996;--no:#ff6b70;--bd:#2c3248}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Roboto,sans-serif}
+#app{max-width:520px;margin:auto;padding:16px 16px 90px}
+h1{font-size:22px;margin:4px 0 12px}.top{display:flex;justify-content:space-between;align-items:center}
+.pill{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:6px 12px;font-size:14px;font-weight:600}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:10px 0}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{width:100%;padding:14px;border-radius:14px;border:0;background:var(--ac);color:#fff;font-weight:700;font-size:16px;margin-top:8px}
+.opt{display:block;width:100%;text-align:left;padding:14px;margin:8px 0;border-radius:14px;border:2px solid var(--bd);background:var(--card);font-size:16px}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--card))}
+.opt.no{border-color:var(--no);background:color-mix(in srgb,var(--no) 18%,var(--card))}
+.big{font-size:26px;font-weight:700;margin:6px 0}.mu{color:var(--mu);font-size:14px}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;padding:12px 4px;border:0;background:none;font-size:13px;color:var(--mu)}nav button.on{color:var(--ac);font-weight:700}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:8px 12px;border-radius:18px;border:1px solid var(--bd);background:var(--card);font-size:14px}.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);gap:8px}
+.sp{border:0;background:none;font-size:20px}
+</style></head><body><div id="app"></div>
+<nav id="nav"></nav>
+<script>
+const WD=`Saludos|hello=hola,goodbye=adiós,please=por favor,thanks=gracias,sorry=perdón,yes=sí,no=no,welcome=bienvenido,friend=amigo,morning=mañana,night=noche,name=nombre,nice=agradable,excuse me=disculpe,again=otra vez,help=ayuda,maybe=quizás,today=hoy,tomorrow=mañana (día),yesterday=ayer,see you=nos vemos,good=bueno,bad=malo,well=bien,fine=bien/estoy bien,how=cómo,what=qué,where=dónde,when=cuándo,who=quién,why=por qué
+Familia|mother=madre,father=padre,brother=hermano,sister=hermana,son=hijo,daughter=hija,grandmother=abuela,grandfather=abuelo,uncle=tío,aunt=tía,cousin=primo,husband=esposo,wife=esposa,baby=bebé,child=niño,parent=padre/madre,family=familia,boy=chico,girl=chica,man=hombre,woman=mujer,people=gente,neighbor=vecino,boyfriend=novio,girlfriend=novia,twin=gemelo,nephew=sobrino,niece=sobrina,relative=pariente
+Números|one=uno,two=dos,three=tres,four=cuatro,five=cinco,six=seis,seven=siete,eight=ocho,nine=nueve,ten=diez,eleven=once,twelve=doce,twenty=veinte,thirty=treinta,fifty=cincuenta,hundred=cien,thousand=mil,first=primero,second=segundo,third=tercero,half=mitad,zero=cero,many=muchos,few=pocos,all=todo,none=ninguno,some=algunos,more=más,less=menos,double=doble
+Comida|water=agua,bread=pan,milk=leche,coffee=café,tea=té,juice=jugo,rice=arroz,meat=carne,chicken=pollo,fish=pescado,egg=huevo,cheese=queso,apple=manzana,banana=plátano,orange=naranja,grape=uva,strawberry=fresa,tomato=tomate,potato=papa,onion=cebolla,carrot=zanahoria,salad=ensalada,soup=sopa,sugar=azúcar,salt=sal,butter=mantequilla,cake=pastel,cookie=galleta,pizza=pizza,breakfast=desayuno,lunch=almuerzo,dinner=cena,hungry=hambriento,thirsty=sediento,delicious=delicioso,beer=cerveza,wine=vino,ice cream=helado,fruit=fruta,vegetable=verdura
+Casa|house=casa,room=habitación,kitchen=cocina,bathroom=baño,bedroom=dormitorio,door=puerta,window=ventana,table=mesa,chair=silla,bed=cama,sofa=sofá,lamp=lámpara,floor=piso,wall=pared,roof=techo,garden=jardín,key=llave,mirror=espejo,shower=ducha,towel=toalla,fridge=refrigerador,stove=estufa,plate=plato,cup=taza,glass=vaso,fork=tenedor,knife=cuchillo,spoon=cuchara,pillow=almohada,blanket=manta,stairs=escaleras,television=televisión,clock=reloj,carpet=alfombra
+Ciudad|city=ciudad,street=calle,road=camino,bridge=puente,building=edificio,store=tienda,market=mercado,bank=banco,hospital=hospital,school=escuela,church=iglesia,park=parque,restaurant=restaurante,hotel=hotel,airport=aeropuerto,station=estación,bus=autobús,train=tren,car=carro,bicycle=bicicleta,taxi=taxi,traffic=tráfico,corner=esquina,map=mapa,left=izquierda,right=derecha,straight=derecho,near=cerca,far=lejos,police=policía,library=biblioteca,museum=museo,pharmacy=farmacia,ticket=boleto,airplane=avión
+Verbos|to be=ser/estar,to have=tener,to do=hacer,to go=ir,to come=venir,to see=ver,to eat=comer,to drink=beber,to sleep=dormir,to work=trabajar,to study=estudiar,to read=leer,to write=escribir,to speak=hablar,to listen=escuchar,to walk=caminar,to run=correr,to buy=comprar,to sell=vender,to give=dar,to take=tomar,to want=querer,to need=necesitar,to like=gustar,to love=amar,to know=saber,to think=pensar,to understand=entender,to learn=aprender,to teach=enseñar,to play=jugar,to open=abrir,to close=cerrar,to call=llamar,to wait=esperar,to live=vivir,to help=ayudar,to ask=preguntar,to answer=responder,to find=encontrar,to leave=salir,to bring=traer,to cook=cocinar,to swim=nadar,to sing=cantar,to dance=bailar,to pay=pagar,to start=empezar,to finish=terminar,to remember=recordar
+Adjetivos|big=grande,small=pequeño,tall=alto,short=bajo/corto,long=largo,old=viejo,new=nuevo,young=joven,happy=feliz,sad=triste,angry=enojado,tired=cansado,beautiful=hermoso,ugly=feo,fast=rápido,slow=lento,hot=caliente,cold=frío,easy=fácil,difficult=difícil,cheap=barato,expensive=caro,clean=limpio,dirty=sucio,heavy=pesado,light=ligero,strong=fuerte,weak=débil,rich=rico,poor=pobre,full=lleno,empty=vacío,open=abierto,closed=cerrado,loud=ruidoso,quiet=silencioso,smart=inteligente,funny=gracioso,busy=ocupado,free=libre,safe=seguro,dangerous=peligroso
+Colores y tiempo|red=rojo,blue=azul,green=verde,yellow=amarillo,black=negro,white=blanco,brown=café,pink=rosado,purple=morado,gray=gris,day=día,week=semana,month=mes,year=año,hour=hora,minute=minuto,Monday=lunes,Tuesday=martes,Wednesday=miércoles,Thursday=jueves,Friday=viernes,Saturday=sábado,Sunday=domingo,spring=primavera,summer=verano,autumn=otoño,winter=invierno,now=ahora,later=después,early=temprano,late=tarde,always=siempre,never=nunca,sometimes=a veces,often=a menudo,weekend=fin de semana,time=tiempo
+Cuerpo y salud|head=cabeza,face=cara,eye=ojo,ear=oreja,nose=nariz,mouth=boca,tooth=diente,hair=cabello,neck=cuello,shoulder=hombro,arm=brazo,hand=mano,finger=dedo,leg=pierna,foot=pie,knee=rodilla,back=espalda,stomach=estómago,heart=corazón,skin=piel,doctor=doctor,nurse=enfermera,medicine=medicina,pain=dolor,fever=fiebre,cough=tos,cold (illness)=resfriado,headache=dolor de cabeza,sick=enfermo,healthy=sano,blood=sangre,bone=hueso,tongue=lengua,throat=garganta,allergy=alergia,emergency=emergencia
+Trabajo y escuela|work=trabajo,job=empleo,boss=jefe,office=oficina,meeting=reunión,salary=sueldo,company=empresa,customer=cliente,teacher=maestro,student=estudiante,class=clase,book=libro,pen=bolígrafo,pencil=lápiz,paper=papel,notebook=cuaderno,computer=computadora,phone=teléfono,email=correo,test=examen,homework=tarea,lesson=lección,question=pregunta,answer=respuesta,word=palabra,sentence=oración,language=idioma,price=precio,money=dinero,card=tarjeta,bag=bolsa,shirt=camisa,pants=pantalones,shoes=zapatos,dress=vestido,hat=sombrero,jacket=chaqueta,socks=calcetines,glasses=lentes
+Naturaleza y animales|sun=sol,moon=luna,star=estrella,sky=cielo,cloud=nube,rain=lluvia,snow=nieve,wind=viento,storm=tormenta,tree=árbol,flower=flor,grass=pasto,mountain=montaña,river=río,lake=lago,sea=mar,beach=playa,forest=bosque,island=isla,fire=fuego,earth=tierra,dog=perro,cat=gato,bird=pájaro,horse=caballo,cow=vaca,pig=cerdo,sheep=oveja,rabbit=conejo,mouse=ratón,lion=león,tiger=tigre,monkey=mono,elephant=elefante,snake=serpiente,bear=oso,wolf=lobo,butterfly=mariposa,bee=abeja,fish (animal)=pez,weather=clima,sunny=soleado,cloudy=nublado`;
+const PH=`How are you?|¿Cómo estás?|I'm fine, thank you. And you?|Estoy bien, gracias. ¿Y tú?
+What's your name?|¿Cómo te llamas?|My name is Anna.|Me llamo Anna.
+Nice to meet you.|Mucho gusto.|Nice to meet you too.|Igualmente.
+Where are you from?|¿De dónde eres?|I'm from Mexico.|Soy de México.
+How old are you?|¿Cuántos años tienes?|I'm twenty-five years old.|Tengo veinticinco años.
+Do you speak English?|¿Hablas inglés?|Yes, a little.|Sí, un poco.
+I don't understand.|No entiendo.|Can you repeat that, please?|¿Puedes repetirlo, por favor?
+Could you speak slowly?|¿Podrías hablar despacio?|Sure, no problem.|Claro, no hay problema.
+Thank you very much.|Muchas gracias.|You're welcome.|De nada.
+I'm sorry.|Lo siento.|It's okay. Don't worry.|Está bien. No te preocupes.
+Excuse me, where is the bathroom?|Disculpe, ¿dónde está el baño?|It's down the hall, on the left.|Está al fondo del pasillo, a la izquierda.
+How much is this?|¿Cuánto cuesta esto?|It's ten dollars.|Cuesta diez dólares.
+Can I pay by card?|¿Puedo pagar con tarjeta?|Yes, of course.|Sí, por supuesto.
+What time is it?|¿Qué hora es?|It's half past three.|Son las tres y media.
+What do you do?|¿A qué te dedicas?|I'm a teacher.|Soy maestro.
+Do you have any brothers or sisters?|¿Tienes hermanos?|Yes, I have one sister.|Sí, tengo una hermana.
+What's the weather like?|¿Cómo está el clima?|It's sunny and warm.|Está soleado y cálido.
+Can you help me?|¿Puedes ayudarme?|Of course. What do you need?|Por supuesto. ¿Qué necesitas?
+Where is the train station?|¿Dónde está la estación de tren?|Go straight and turn right.|Ve derecho y gira a la derecha.
+How do I get to the airport?|¿Cómo llego al aeropuerto?|Take the bus number five.|Toma el autobús número cinco.
+I'd like a coffee, please.|Quisiera un café, por favor.|Would you like milk or sugar?|¿Quiere leche o azúcar?
+Table for two, please.|Una mesa para dos, por favor.|Right this way.|Por aquí.
+Can I see the menu?|¿Puedo ver el menú?|Here you are.|Aquí tiene.
+What would you like to drink?|¿Qué le gustaría beber?|Just water, thanks.|Solo agua, gracias.
+The check, please.|La cuenta, por favor.|I'll bring it right away.|Se la traigo enseguida.
+I'm hungry.|Tengo hambre.|Let's eat something.|Comamos algo.
+I'm tired.|Estoy cansado.|You should get some rest.|Deberías descansar.
+I don't feel well.|No me siento bien.|Do you want to see a doctor?|¿Quieres ver a un doctor?
+I have a headache.|Me duele la cabeza.|Take some medicine.|Toma una medicina.
+Call an ambulance!|¡Llama a una ambulancia!|I'm calling right now!|¡Estoy llamando ahora mismo!
+Where do you live?|¿Dónde vives?|I live in a small apartment.|Vivo en un apartamento pequeño.
+What are you doing?|¿Qué estás haciendo?|I'm studying English.|Estoy estudiando inglés.
+What did you do yesterday?|¿Qué hiciste ayer?|I stayed at home.|Me quedé en casa.
+What are you going to do tomorrow?|¿Qué vas a hacer mañana?|I'm going to work.|Voy a trabajar.
+Do you like music?|¿Te gusta la música?|Yes, I love it!|¡Sí, me encanta!
+What's your favorite food?|¿Cuál es tu comida favorita?|I really like pizza.|Me gusta mucho la pizza.
+Would you like to come with me?|¿Quieres venir conmigo?|Sure, I'd love to.|Claro, me encantaría.
+Let's meet at six.|Nos vemos a las seis.|Sounds good.|Me parece bien.
+Are you ready?|¿Estás listo?|Just a minute.|Un momento.
+I'm late!|¡Llego tarde!|Hurry up!|¡Date prisa!
+Happy birthday!|¡Feliz cumpleaños!|Thank you!|¡Gracias!
+Good luck!|¡Buena suerte!|Thanks, I need it.|Gracias, lo necesito.
+Have a nice day.|Que tengas un buen día.|You too.|Tú también.
+See you later.|Hasta luego.|Take care.|Cuídate.
+Can I borrow your pen?|¿Puedo pedirte prestado tu bolígrafo?|Sure, here you go.|Claro, toma.
+What does this word mean?|¿Qué significa esta palabra?|It means "house".|Significa "casa".
+How do you spell your name?|¿Cómo se escribe tu nombre?|A-N-N-A.|A-N-N-A.
+Is this seat taken?|¿Está ocupado este asiento?|No, go ahead.|No, adelante.
+Do you have a reservation?|¿Tiene una reservación?|Yes, under Smith.|Sí, a nombre de Smith.
+I lost my keys.|Perdí mis llaves.|Where did you see them last?|¿Dónde las viste por última vez?
+Can I try this on?|¿Puedo probarme esto?|The fitting room is over there.|El probador está allá.
+What's your phone number?|¿Cuál es tu número de teléfono?|It's five five five, one two three four.|Es cinco cinco cinco, uno dos tres cuatro.
+I'm just looking, thanks.|Solo estoy mirando, gracias.|Let me know if you need anything.|Avíseme si necesita algo.
+I agree with you.|Estoy de acuerdo contigo.|I'm glad we think alike.|Me alegra que pensemos igual.
+I don't know.|No sé.|Let me check for you.|Déjame averiguarlo.`;
+const cats=WD.split("\n").map(l=>{const[n,r]=l.split("|");return{n,w:r.split(",").map(x=>x.split("="))}});
+const allW=cats.flatMap(c=>c.w),P=PH.split("\n").map(l=>l.split("|"));
+let s={xp:0,streak:0,last:"",known:{}},tab="w",cat=-1,Q=null;
+try{const x=localStorage.getItem("spk");if(x)s=Object.assign(s,JSON.parse(x))}catch(e){}
+const save=()=>{try{localStorage.setItem("spk",JSON.stringify(s))}catch(e){}};
+const $=id=>document.getElementById(id),sh=a=>[...a].sort(()=>Math.random()-.5);
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+const mastered=()=>allW.filter(w=>(s.known[w[0]]||0)>=3).length;
+function nav(){$("nav").innerHTML=[["w","📚","Palabras"],["p","💬","Frases"],["l","📖","Lista"],["g","🏆","Progreso"]].map(([k,i,n])=>`<button class="${tab==k?"on":""}" onclick="go('${k}')">${i}<br>${n}</button>`).join("")}
+function go(t){tab=t;Q=null;draw()}
+function top(){return`<div class="top"><h1>Speakly</h1><div><span class="pill">🔥 ${s.streak}</span> <span class="pill">⭐ ${s.xp}</span></div></div>`}
+function draw(){nav();const a=$("app");
+if(Q)return quiz(a);
+if(tab=="w"){a.innerHTML=top()+`<div class="card"><b>Elige un tema</b><div class="chips" style="margin-top:10px"><button class="chip ${cat<0?"on":""}" onclick="cat=-1;draw()">Todos</button>${cats.map((c,i)=>`<button class="chip ${cat==i?"on":""}" onclick="cat=${i};draw()">${c.n}</button>`).join("")}</div></div><button class="btn" onclick="startW()">Practicar 10 palabras</button>`}
+else if(tab=="p"){a.innerHTML=top()+`<div class="card"><b>Responde la frase</b><p class="mu">Te decimos una frase común en inglés y tú eliges la respuesta correcta. ${P.length} frases disponibles.</p></div><button class="btn" onclick="startP()">Practicar 10 frases</button>`}
+else if(tab=="l"){a.innerHTML=top()+`<div class="card"><b>Frases y respuestas</b>${P.map(p=>`<div class="row"><div><div>${p[0]}</div><div class="mu">${p[1]}</div><div style="color:var(--ac)">↳ ${p[2]}</div><div class="mu">${p[3]}</div></div><button class="sp" onclick="say(\`${p[0].replace(/`/g,"")} ${p[2]}\`)">🔊</button></div>`).join("")}</div><div class="card"><b>Palabras</b>${cats.map(c=>`<p style="margin:12px 0 4px"><b>${c.n}</b></p>`+c.w.map(w=>`<div class="row"><span>${w[0]} <span class="mu">– ${w[1]}</span></span><button class="sp" onclick="say('${w[0].replace(/'/g,"")}')">🔊</button></div>`).join("")).join("")}</div>`}
+else{a.innerHTML=top()+`<div class="card"><div class="big">${mastered()} / ${allW.length}</div><div class="mu">palabras dominadas (3 aciertos)</div><div class="bar" style="margin-top:10px"><i style="width:${mastered()/allW.length*100}%"></i></div></div><div class="card"><div class="big">${Object.keys(s.known).length}</div><div class="mu">palabras y frases practicadas</div></div><div class="card mu">Practica cada día para mantener tu racha 🔥</div>`}}
+function startW(){const pool=cat<0?allW:cats[cat].w,src=pool.length>=4?pool:allW;
+const items=sh(src).sort((a,b)=>(s.known[a[0]]||0)-(s.known[b[0]]||0)).slice(0,10);
+Q={i:0,ok:0,q:items.map(w=>{const d=Math.random()<.5,o=sh(allW.filter(x=>x!=w)).slice(0,3);return{pr:d?w[0]:w[1],sub:"",op:sh([w,...o]).map(x=>d?x[1]:x[0]),an:d?w[1]:w[0],k:w[0],sp:w[0],info:w[0]+" = "+w[1]}})};draw()}
+function startP(){Q={i:0,ok:0,q:sh(P).slice(0,10).map(p=>({pr:p[0],sub:p[1],op:sh([p[2],...sh(P.filter(x=>x!=p)).slice(0,2).map(x=>x[2])]),an:p[2],k:p[0],sp:p[0],info:p[3]}))};draw()}
+function quiz(a){if(Q.i>=Q.q.length){const d=new Date().toDateString();if(s.last!=d){const y=new Date(Date.now()-864e5).toDateString();s.streak=s.last==y?s.streak+1:1;s.last=d}save();
+a.innerHTML=top()+`<div class="card" style="text-align:center"><div class="big">🎉 ${Q.ok} / ${Q.q.length}</div><p class="mu">¡Sesión completada!</p></div><button class="btn" onclick="go(tab)">Terminar</button>`;Q=null;return}
+const q=Q.q[Q.i];a.innerHTML=`<div class="bar"><i style="width:${Q.i/Q.q.length*100}%"></i></div><div class="card" style="margin-top:16px"><div class="mu">${Q.i+1}/${Q.q.length}</div><div class="big">${q.pr} <button class="sp" onclick="say(\`${q.sp.replace(/`/g,"")}\`)">🔊</button></div><div class="mu">${q.sub}</div></div><div id="o">${q.op.map((o,i)=>`<button class="opt" onclick="pick(${i})">${o}</button>`).join("")}</div><div id="f"></div>`}
+function pick(i){const q=Q.q[Q.i],bs=document.querySelectorAll(".opt"),good=q.op[i]==q.an;
+bs.forEach((b,j)=>{b.disabled=true;if(q.op[j]==q.an)b.classList.add("ok");else if(j==i)b.classList.add("no")});
+if(good){Q.ok++;s.xp+=10;s.known[q.k]=(s.known[q.k]||0)+1}else s.known[q.k]=Math.max(0,(s.known[q.k]||0)-1)||0;
+save();say(q.an.length<40?q.an:q.sp);
+$("f").innerHTML=`<p class="mu">${good?"✅ ¡Correcto!":"❌ Era: "+q.an} — ${q.info}</p><button class="btn" onclick="Q.i++;draw()">Continuar</button>`}
+draw();
+</script></body></html>
