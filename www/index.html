@@ -167,7 +167,10 @@ let s={xp:0,streak:0,last:"",known:{}},tab="w",cat=-1,Q=null;
 try{const x=localStorage.getItem("spk");if(x)s=Object.assign(s,JSON.parse(x))}catch(e){}
 const save=()=>{try{localStorage.setItem("spk",JSON.stringify(s))}catch(e){}};
 const $=id=>document.getElementById(id),sh=a=>[...a].sort(()=>Math.random()-.5);
-function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function webSay(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function say(t){const T=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.TextToSpeech;
+if(!T)return webSay(t);
+Promise.resolve().then(()=>T.stop()).catch(()=>{}).then(()=>T.speak({text:t,lang:"en-US",rate:.9,pitch:1,volume:1})).catch(()=>webSay(t))}
 const mastered=()=>allW.filter(w=>(s.known[w[0]]||0)>=3).length;
 function nav(){$("nav").innerHTML=[["w","📚","Palabras"],["p","💬","Frases"],["r","✏️","Gramática"],["n","🔢","Números"],["l","📖","Lista"],["g","🏆","Progreso"]].map(([k,i,n])=>`<button class="${tab==k?"on":""}" onclick="go('${k}')">${i}<br>${n}</button>`).join("")}
 function go(t){tab=t;Q=null;draw()}
