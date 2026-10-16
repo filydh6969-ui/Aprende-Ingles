@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"><title>Speakly – Aprende inglés</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2563eb"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7fb;--card:#fff;--tx:#1d2433;--mu:#6b7385;--ac:#6c5ce7;--ok:#1fa97a;--no:#e5484d;--bd:#e3e6ee}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141c;--card:#1c2030;--tx:#eef0f7;--mu:#98a0b5;--ac:#8b7dff;--ok:#38c996;--no:#ff6b70;--bd:#2c3248}}
-:root[data-theme="dark"]{--bg:#12141c;--card:#1c2030;--tx:#eef0f7;--mu:#98a0b5;--ac:#8b7dff;--ok:#38c996;--no:#ff6b70;--bd:#2c3248}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#eaf3ff;--card:#fff;--tx:#0b1f4d;--mu:#5a74a8;--ac:#2563eb;--ac2:#06b6d4;--ac3:#38bdf8;--ok:#10b981;--no:#f43f5e;--bd:#cfe0ff;--g:linear-gradient(135deg,#1d4ed8,#2563eb 45%,#06b6d4);--sh:0 8px 24px rgba(37,99,235,.2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#040b24;--card:#0b1a44;--tx:#eaf2ff;--mu:#8fb0e8;--ac:#60a5fa;--ac2:#22d3ee;--ac3:#38bdf8;--ok:#34d399;--no:#fb7185;--bd:#1c3375;--sh:0 8px 24px rgba(0,0,0,.45)}}
+:root[data-theme="dark"]{--bg:#040b24;--card:#0b1a44;--tx:#eaf2ff;--mu:#8fb0e8;--ac:#60a5fa;--ac2:#22d3ee;--ac3:#38bdf8;--ok:#34d399;--no:#fb7185;--bd:#1c3375;--sh:0 8px 24px rgba(0,0,0,.45)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Roboto,sans-serif}
-#app{max-width:520px;margin:auto;padding:16px 16px 90px}
-h1{font-size:22px;margin:4px 0 12px}.top{display:flex;justify-content:space-between;align-items:center}
-.pill{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:6px 12px;font-size:14px;font-weight:600}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:10px 0}
-button{font:inherit;color:inherit;cursor:pointer}
-.btn{width:100%;padding:14px;border-radius:14px;border:0;background:var(--ac);color:#fff;font-weight:700;font-size:16px;margin-top:8px}
-.opt{display:block;width:100%;text-align:left;padding:14px;margin:8px 0;border-radius:14px;border:2px solid var(--bd);background:var(--card);font-size:16px}
-.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--card))}
-.opt.no{border-color:var(--no);background:color-mix(in srgb,var(--no) 18%,var(--card))}
-.big{font-size:26px;font-weight:700;margin:6px 0}.mu{color:var(--mu);font-size:14px}
-.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;padding:12px 4px;border:0;background:none;font-size:13px;color:var(--mu)}nav button.on{color:var(--ac);font-weight:700}
-.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:8px 12px;border-radius:18px;border:1px solid var(--bd);background:var(--card);font-size:14px}.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);background-image:radial-gradient(circle at 90% -5%,rgba(6,182,212,.3),transparent 45%),radial-gradient(circle at -10% 20%,rgba(37,99,235,.3),transparent 40%);background-attachment:fixed;color:var(--tx);font-family:system-ui,-apple-system,Roboto,sans-serif}
+#app{max-width:520px;margin:auto;padding:16px 16px 110px}
+h1{font-size:30px;font-weight:900;margin:4px 0 12px;letter-spacing:-.5px;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.top{display:flex;justify-content:space-between;align-items:center}
+.pill{background:var(--g);color:#fff;border-radius:20px;padding:6px 12px;font-size:14px;font-weight:800;box-shadow:var(--sh)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:18px;margin:12px 0;box-shadow:var(--sh)}
+button{font:inherit;color:inherit;cursor:pointer;transition:transform .12s}
+button:active{transform:scale(.96)}
+.btn{width:100%;padding:16px;border-radius:18px;border:0;background:var(--g);color:#fff;font-weight:800;font-size:17px;margin-top:10px;box-shadow:0 10px 24px rgba(37,99,235,.45)}
+.opt{display:block;width:100%;text-align:left;padding:16px;margin:10px 0;border-radius:18px;border:2px solid var(--bd);background:var(--card);font-size:17px;font-weight:600;box-shadow:var(--sh)}
+.opt.ok{border-color:var(--ok);background:rgba(16,185,129,.22);animation:pop .3s}
+.opt.no{border-color:var(--no);background:rgba(244,63,94,.22)}
+@keyframes pop{50%{transform:scale(1.04)}}
+.big{font-size:28px;font-weight:900;margin:6px 0}.mu{color:var(--mu);font-size:14px}
+.bar{height:12px;background:var(--bd);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--g);border-radius:8px;transition:width .4s}
+nav{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;background:var(--card);border:1px solid var(--bd);border-radius:26px;padding:6px;box-shadow:var(--sh);max-width:496px;margin:auto}
+nav button{flex:1;padding:8px 1px;border:0;background:none;font-size:10.5px;color:var(--mu);border-radius:20px;font-weight:600}
+nav button.on{background:var(--g);color:#fff;font-weight:800}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:9px 14px;border-radius:20px;border:2px solid var(--c,var(--ac));background:var(--card);font-size:14px;font-weight:700;color:var(--c,var(--ac))}
+.chip:nth-child(5n+1){--c:#2563eb}.chip:nth-child(5n+2){--c:#0ea5e9}.chip:nth-child(5n+3){--c:#06b6d4}.chip:nth-child(5n+4){--c:#6366f1}.chip:nth-child(5n){--c:#0891b2}
+.chip.on{background:var(--c);color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.25)}
 .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);gap:8px}
-.sp{border:0;background:none;font-size:20px}
+.sp{border:0;background:var(--g);border-radius:50%;width:38px;height:38px;font-size:17px;flex:none}
 </style></head><body><div id="app"></div>
 <nav id="nav"></nav>
 <script>
@@ -93,34 +101,120 @@ What's your phone number?|¿Cuál es tu número de teléfono?|It's five five fiv
 I'm just looking, thanks.|Solo estoy mirando, gracias.|Let me know if you need anything.|Avíseme si necesita algo.
 I agree with you.|Estoy de acuerdo contigo.|I'm glad we think alike.|Me alegra que pensemos igual.
 I don't know.|No sé.|Let me check for you.|Déjame averiguarlo.`;
-const cats=WD.split("\n").map(l=>{const[n,r]=l.split("|");return{n,w:r.split(",").map(x=>x.split("="))}});
-const allW=cats.flatMap(c=>c.w),P=PH.split("\n").map(l=>l.split("|"));
+const WD2=`Pronombres y preguntas|I=yo,you=tú,he=él,she=ella,it=eso,we=nosotros,they=ellos,my=mi,your=tu,his=su (de él),her=su (de ella),our=nuestro,their=su (de ellos),this=esto,that=eso (allá),these=estos,those=esos,which=cuál,whose=de quién,how much=cuánto,how many=cuántos,me=me/mí,him=lo/él,us=nos,them=los/las,mine=mío,yours=tuyo,something=algo,nothing=nada,everyone=todos,someone=alguien,everything=todo,here=aquí,there=allí
+Preposiciones y conectores|in=en,on=sobre,at=en (lugar/hora),under=debajo,behind=detrás,between=entre,next to=junto a,in front of=frente a,from=de (origen),to=a/hacia,with=con,without=sin,for=para/por,about=acerca de,after=después de,before=antes de,during=durante,until=hasta,around=alrededor,and=y,but=pero,or=o,because=porque,so=así que,if=si,then=entonces,also=también,very=muy,only=solo,already=ya,still=todavía,just=justo,even=incluso
+Más verbos|to get=obtener,to make=fabricar,to say=decir,to tell=contar,to try=intentar,to use=usar,to put=poner,to keep=guardar,to let=dejar,to begin=comenzar,to show=mostrar,to hear=oír,to feel=sentir,to look=mirar,to watch=observar,to meet=conocer,to send=enviar,to receive=recibir,to wear=vestir,to wash=lavar,to clean=limpiar,to travel=viajar,to visit=visitar,to arrive=llegar,to stay=quedarse,to change=cambiar,to carry=cargar,to choose=elegir,to win=ganar,to lose=perder,to forget=olvidar,to believe=creer,to hope=esperar (con ilusión),to miss=extrañar,to wake up=despertarse,to sit=sentarse,to turn on=encender,to turn off=apagar,to borrow=pedir prestado,to lend=prestar,to smile=sonreír,to laugh=reír,to cry=llorar,to drive=conducir,to fly=volar,to rest=descansar,to worry=preocuparse,to enjoy=disfrutar,to fix=arreglar
+Tecnología|internet=internet,website=sitio web,password=contraseña,screen=pantalla,keyboard=teclado,battery=batería,charger=cargador,message=mensaje,photo=foto,video=video,app=aplicación,file=archivo,link=enlace,download=descargar,upload=subir,click=hacer clic,search=buscar,online=en línea,wifi=wifi,camera=cámara,headphones=audífonos,speaker=altavoz,printer=impresora,social media=redes sociales,network=red,signal=señal,account=cuenta,update=actualizar,save=guardar,delete=borrar,device=dispositivo,video call=videollamada,voice=voz,notification=notificación
+Viajes y lugares|passport=pasaporte,luggage=equipaje,suitcase=maleta,flight=vuelo,gate=puerta de embarque,reservation=reservación,tourist=turista,guide=guía,customs=aduana,departure=salida (viaje),arrival=llegada,delay=retraso,seat=asiento,round trip=ida y vuelta,one way=solo ida,sightseeing=turismo,souvenir=recuerdo,hostel=hostal,elevator=ascensor,entrance=entrada,exit=salida,subway=metro,platform=andén,fare=tarifa,address=dirección,country=país,border=frontera,village=pueblo,coast=costa,desert=desierto,valley=valle,cinema=cine,theater=teatro,stadium=estadio,supermarket=supermercado,bakery=panadería,gas station=gasolinera,post office=correo
+Compras y ropa|shopping=compras,size=talla,discount=descuento,sale=oferta,receipt=recibo,cash=efectivo,change=cambio (dinero),wallet=cartera,purse=bolso,coat=abrigo,sweater=suéter,jeans=jeans,skirt=falda,shorts=pantalones cortos,underwear=ropa interior,scarf=bufanda,gloves=guantes,belt=cinturón,boots=botas,sandals=sandalias,sneakers=tenis,pocket=bolsillo,button=botón,suit=traje,tie=corbata,ring=anillo,necklace=collar,umbrella=paraguas,backpack=mochila,perfume=perfume,cart=carrito,bargain=ganga,brand=marca
+Emociones|excited=emocionado,bored=aburrido,nervous=nervioso,worried=preocupado,proud=orgulloso,shy=tímido,brave=valiente,kind=amable,rude=grosero,lazy=perezoso,honest=honesto,generous=generoso,friendly=amistoso,serious=serio,calm=tranquilo,jealous=celoso,lonely=solitario,surprised=sorprendido,scared=asustado,confused=confundido,curious=curioso,patient=paciente,polite=educado,creative=creativo,selfish=egoísta,sleepy=somnoliento,love=amor,fear=miedo,hope=esperanza,dream=sueño,joy=alegría,peace=paz,trust=confianza,luck=suerte,secret=secreto
+Deportes y ocio|sport=deporte,soccer=fútbol,basketball=baloncesto,baseball=béisbol,tennis=tenis,swimming=natación,team=equipo,player=jugador,coach=entrenador,ball=pelota,game=juego,match=partido,goal=gol,race=carrera,gym=gimnasio,exercise=ejercicio,hobby=pasatiempo,movie=película,song=canción,concert=concierto,guitar=guitarra,piano=piano,camping=acampar,fishing=pesca,hiking=senderismo,party=fiesta,gift=regalo,holiday=vacaciones,birthday=cumpleaños,wedding=boda,toy=juguete,puzzle=rompecabezas,novel=novela,magazine=revista,newspaper=periódico,story=historia,joke=chiste
+Objetos del hogar|soap=jabón,shampoo=champú,toothbrush=cepillo de dientes,toothpaste=pasta dental,comb=peine,toilet=inodoro,sink=lavabo,bathtub=bañera,oven=horno,microwave=microondas,washing machine=lavadora,iron=plancha,broom=escoba,trash=basura,bottle=botella,bowl=tazón,pan=sartén,pot=olla,drawer=cajón,shelf=estante,closet=armario,curtain=cortina,garage=garaje,balcony=balcón,basement=sótano,fence=cerca,mailbox=buzón,candle=vela,box=caja,rope=cuerda,hammer=martillo,light bulb=bombilla,fan=ventilador
+Profesiones y sociedad|engineer=ingeniero,lawyer=abogado,farmer=agricultor,driver=conductor,cook=cocinero,waiter=mesero,dentist=dentista,artist=artista,singer=cantante,pilot=piloto,firefighter=bombero,mechanic=mecánico,secretary=secretaria,manager=gerente,worker=obrero,scientist=científico,writer=escritor,actor=actor,soldier=soldado,judge=juez,baker=panadero,butcher=carnicero,cashier=cajero,guest=invitado,owner=dueño,government=gobierno,law=ley,vote=voto,war=guerra,history=historia,culture=cultura,news=noticias`;
+const PH2=`Are you a student?|¿Eres estudiante?|Yes, I am.|Sí, lo soy.
+Is she your sister?|¿Es ella tu hermana?|No, she isn't. She's my cousin.|No, es mi prima.
+Are they at home?|¿Están en casa?|No, they aren't.|No, no están.
+Do you like coffee?|¿Te gusta el café?|Yes, I do.|Sí, me gusta.
+Does he work here?|¿Él trabaja aquí?|No, he doesn't.|No, no trabaja aquí.
+Do they speak Spanish?|¿Hablan español?|Yes, they do.|Sí, hablan.
+Does she have a car?|¿Ella tiene carro?|Yes, she does.|Sí, tiene.
+Where do you work?|¿Dónde trabajas?|I work in a bank.|Trabajo en un banco.
+What does he want?|¿Qué quiere él?|He wants a glass of water.|Quiere un vaso de agua.
+Why are you late?|¿Por qué llegas tarde?|Because of the traffic.|Por el tráfico.
+Who is that man?|¿Quién es ese hombre?|He's my new boss.|Es mi nuevo jefe.
+Which one do you prefer?|¿Cuál prefieres?|I prefer the blue one.|Prefiero el azul.
+How many people are there?|¿Cuánta gente hay?|There are about twenty.|Hay unas veinte.
+How long does it take?|¿Cuánto tarda?|It takes two hours.|Tarda dos horas.
+How far is it?|¿Qué tan lejos está?|It's five minutes away.|Está a cinco minutos.
+Is there a bank near here?|¿Hay un banco cerca?|Yes, there is, next to the park.|Sí, uno junto al parque.
+Can you swim?|¿Sabes nadar?|Yes, I can.|Sí, sé.
+Could I use your phone?|¿Podría usar tu teléfono?|Sure, go ahead.|Claro, adelante.
+What do you want to eat?|¿Qué quieres comer?|I want some chicken.|Quiero pollo.
+Do you want some more?|¿Quieres más?|No, thanks. I'm full.|No, gracias. Estoy lleno.
+What are you looking for?|¿Qué buscas?|I'm looking for my wallet.|Busco mi cartera.
+Have you ever been to London?|¿Has estado en Londres?|No, never.|No, nunca.
+How long have you lived here?|¿Cuánto llevas viviendo aquí?|For three years.|Tres años.
+What time do you wake up?|¿A qué hora te despiertas?|I wake up at seven.|A las siete.
+Do you have plans for the weekend?|¿Tienes planes para el fin de semana?|Not yet. Do you?|Aún no. ¿Y tú?
+What's your job?|¿Cuál es tu trabajo?|I'm a nurse.|Soy enfermera.
+Can I take a message?|¿Puedo tomar un mensaje?|Yes, please tell him I called.|Sí, dile que llamé.
+Is it far from here?|¿Queda lejos de aquí?|No, you can walk.|No, puedes ir caminando.
+What size are you?|¿Qué talla eres?|I'm a medium.|Soy mediana.
+Do you take credit cards?|¿Aceptan tarjetas de crédito?|Yes, we do.|Sí, aceptamos.
+Is breakfast included?|¿El desayuno está incluido?|Yes, from seven to ten.|Sí, de siete a diez.
+I'd like to book a room.|Quisiera reservar una habitación.|For how many nights?|¿Por cuántas noches?
+Where can I buy a ticket?|¿Dónde compro un boleto?|At the counter over there.|En el mostrador de allá.
+What's wrong?|¿Qué pasa?|I'm worried about my exam.|Me preocupa mi examen.
+Do you mind if I sit here?|¿Te importa si me siento aquí?|Not at all.|Para nada.
+Could you open the window?|¿Podrías abrir la ventana?|Of course.|Por supuesto.
+What's the matter with him?|¿Qué le pasa a él?|He has a stomachache.|Le duele el estómago.
+How was your day?|¿Cómo estuvo tu día?|It was great, thanks.|Estuvo genial, gracias.
+Did you sleep well?|¿Dormiste bien?|Yes, like a baby.|Sí, como un bebé.
+What did you have for lunch?|¿Qué almorzaste?|I had a sandwich.|Comí un sándwich.
+Where were you last night?|¿Dónde estabas anoche?|I was at the cinema.|En el cine.
+Who is calling?|¿Quién llama?|It's Peter from the office.|Es Peter de la oficina.
+Are you busy right now?|¿Estás ocupado ahora?|A little. Can I call you back?|Un poco. ¿Te llamo luego?
+Do you know him?|¿Lo conoces?|Yes, he's an old friend.|Sí, es un viejo amigo.
+Is this your bag?|¿Es esta tu bolsa?|No, it's not mine.|No, no es mía.
+What's the date today?|¿Qué fecha es hoy?|It's October sixteenth.|Es 16 de octubre.
+Do you need anything?|¿Necesitas algo?|No, I'm all set.|No, estoy listo.
+How do you say "gracias" in English?|¿Cómo se dice "gracias" en inglés?|You say "thank you".|Se dice "thank you".
+Does this bus go downtown?|¿Este autobús va al centro?|Yes, it does.|Sí, va.
+Congratulations!|¡Felicidades!|Thank you so much!|¡Muchas gracias!`;
+const cats=(WD+"\n"+WD2).split("\n").map(l=>{const[n,r]=l.split("|");return{n,w:r.split(",").map(x=>x.split("="))}});
+const allW=cats.flatMap(c=>c.w),P=(PH+"\n"+PH2).split("\n").map(l=>l.split("|"));
 let s={xp:0,streak:0,last:"",known:{}},tab="w",cat=-1,Q=null;
 try{const x=localStorage.getItem("spk");if(x)s=Object.assign(s,JSON.parse(x))}catch(e){}
 const save=()=>{try{localStorage.setItem("spk",JSON.stringify(s))}catch(e){}};
 const $=id=>document.getElementById(id),sh=a=>[...a].sort(()=>Math.random()-.5);
 function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
 const mastered=()=>allW.filter(w=>(s.known[w[0]]||0)>=3).length;
-function nav(){$("nav").innerHTML=[["w","📚","Palabras"],["p","💬","Frases"],["l","📖","Lista"],["g","🏆","Progreso"]].map(([k,i,n])=>`<button class="${tab==k?"on":""}" onclick="go('${k}')">${i}<br>${n}</button>`).join("")}
+function nav(){$("nav").innerHTML=[["w","📚","Palabras"],["p","💬","Frases"],["r","✏️","Gramática"],["n","🔢","Números"],["l","📖","Lista"],["g","🏆","Progreso"]].map(([k,i,n])=>`<button class="${tab==k?"on":""}" onclick="go('${k}')">${i}<br>${n}</button>`).join("")}
 function go(t){tab=t;Q=null;draw()}
-function top(){return`<div class="top"><h1>Speakly</h1><div><span class="pill">🔥 ${s.streak}</span> <span class="pill">⭐ ${s.xp}</span></div></div>`}
+function hdr(){return`<div class="top"><h1>Speakly</h1><div><span class="pill">🔥 ${s.streak}</span> <span class="pill">⭐ ${s.xp}</span></div></div>`}
 function draw(){nav();const a=$("app");
 if(Q)return quiz(a);
-if(tab=="w"){a.innerHTML=top()+`<div class="card"><b>Elige un tema</b><div class="chips" style="margin-top:10px"><button class="chip ${cat<0?"on":""}" onclick="cat=-1;draw()">Todos</button>${cats.map((c,i)=>`<button class="chip ${cat==i?"on":""}" onclick="cat=${i};draw()">${c.n}</button>`).join("")}</div></div><button class="btn" onclick="startW()">Practicar 10 palabras</button>`}
-else if(tab=="p"){a.innerHTML=top()+`<div class="card"><b>Responde la frase</b><p class="mu">Te decimos una frase común en inglés y tú eliges la respuesta correcta. ${P.length} frases disponibles.</p></div><button class="btn" onclick="startP()">Practicar 10 frases</button>`}
-else if(tab=="l"){a.innerHTML=top()+`<div class="card"><b>Frases y respuestas</b>${P.map(p=>`<div class="row"><div><div>${p[0]}</div><div class="mu">${p[1]}</div><div style="color:var(--ac)">↳ ${p[2]}</div><div class="mu">${p[3]}</div></div><button class="sp" onclick="say(\`${p[0].replace(/`/g,"")} ${p[2]}\`)">🔊</button></div>`).join("")}</div><div class="card"><b>Palabras</b>${cats.map(c=>`<p style="margin:12px 0 4px"><b>${c.n}</b></p>`+c.w.map(w=>`<div class="row"><span>${w[0]} <span class="mu">– ${w[1]}</span></span><button class="sp" onclick="say('${w[0].replace(/'/g,"")}')">🔊</button></div>`).join("")).join("")}</div>`}
-else{a.innerHTML=top()+`<div class="card"><div class="big">${mastered()} / ${allW.length}</div><div class="mu">palabras dominadas (3 aciertos)</div><div class="bar" style="margin-top:10px"><i style="width:${mastered()/allW.length*100}%"></i></div></div><div class="card"><div class="big">${Object.keys(s.known).length}</div><div class="mu">palabras y frases practicadas</div></div><div class="card mu">Practica cada día para mantener tu racha 🔥</div>`}}
+if(tab=="w"){a.innerHTML=hdr()+`<div class="card"><b>Elige un tema</b><div class="chips" style="margin-top:10px"><button class="chip ${cat<0?"on":""}" onclick="cat=-1;draw()">Todos</button>${cats.map((c,i)=>`<button class="chip ${cat==i?"on":""}" onclick="cat=${i};draw()">${c.n}</button>`).join("")}</div></div><button class="btn" onclick="startW()">Practicar 10 palabras</button>`}
+else if(tab=="p"){a.innerHTML=hdr()+`<div class="card"><b>Responde la frase</b><p class="mu">Te decimos una frase común en inglés y tú eliges la respuesta correcta. ${P.length} frases disponibles.</p></div><button class="btn" onclick="startP()">Practicar 10 frases</button>`}
+else if(tab=="r"){a.innerHTML=hdr()+`<div class="card"><b>Gramática básica</b><p class="mu">• <b>To be:</b> I am · he/she/it is · you/we/they are<br>• <b>Do/Does:</b> does con he/she/it, do con los demás; luego el verbo sin -s<br>• <b>Have/Has:</b> has con he/she/it<br>• <b>There is/are:</b> is = uno · are = varios</p></div><button class="btn" onclick="startG()">Practicar 10 ejercicios</button>`}
+else if(tab=="n"){a.innerHTML=hdr()+`<div class="card"><b>Elige un nivel</b><div class="chips" style="margin-top:10px">${LV.map((l,i)=>`<button class="chip ${lv==i?"on":""}" onclick="lv=${i};draw()">${l[0]}–${l[1]}</button>`).join("")}</div></div><div class="card mu">💡 Practicas leer, escribir y escuchar números. Ojo: <b>thirteen</b> (13) acentúa el final y <b>thirty</b> (30) el inicio.</div><button class="btn" onclick="startN()">Practicar 10 números</button>`}
+else if(tab=="l"){a.innerHTML=hdr()+`<div class="card"><b>Frases y respuestas</b>${P.map(p=>`<div class="row"><div><div>${p[0]}</div><div class="mu">${p[1]}</div><div style="color:var(--ac)">↳ ${p[2]}</div><div class="mu">${p[3]}</div></div><button class="sp" onclick="say(\`${p[0].replace(/`/g,"")} ${p[2]}\`)">🔊</button></div>`).join("")}</div><div class="card"><b>Palabras</b>${cats.map(c=>`<p style="margin:12px 0 4px"><b>${c.n}</b></p>`+c.w.map(w=>`<div class="row"><span>${w[0]} <span class="mu">– ${w[1]}</span></span><button class="sp" onclick="say('${w[0].replace(/'/g,"")}')">🔊</button></div>`).join("")).join("")}</div>`}
+else{a.innerHTML=hdr()+`<div class="card"><div class="big">${mastered()} / ${allW.length}</div><div class="mu">palabras dominadas (3 aciertos)</div><div class="bar" style="margin-top:10px"><i style="width:${mastered()/allW.length*100}%"></i></div></div><div class="card"><div class="big">${Object.keys(s.known).length}</div><div class="mu">palabras y frases practicadas</div></div><div class="card mu">Practica cada día para mantener tu racha 🔥</div>`}}
 function startW(){const pool=cat<0?allW:cats[cat].w,src=pool.length>=4?pool:allW;
 const items=sh(src).sort((a,b)=>(s.known[a[0]]||0)-(s.known[b[0]]||0)).slice(0,10);
 Q={i:0,ok:0,q:items.map(w=>{const d=Math.random()<.5,o=sh(allW.filter(x=>x!=w)).slice(0,3);return{pr:d?w[0]:w[1],sub:"",op:sh([w,...o]).map(x=>d?x[1]:x[0]),an:d?w[1]:w[0],k:w[0],sp:w[0],info:w[0]+" = "+w[1]}})};draw()}
 function startP(){Q={i:0,ok:0,q:sh(P).slice(0,10).map(p=>({pr:p[0],sub:p[1],op:sh([p[2],...sh(P.filter(x=>x!=p)).slice(0,2).map(x=>x[2])]),an:p[2],k:p[0],sp:p[0],info:p[3]}))};draw()}
 function quiz(a){if(Q.i>=Q.q.length){const d=new Date().toDateString();if(s.last!=d){const y=new Date(Date.now()-864e5).toDateString();s.streak=s.last==y?s.streak+1:1;s.last=d}save();
-a.innerHTML=top()+`<div class="card" style="text-align:center"><div class="big">🎉 ${Q.ok} / ${Q.q.length}</div><p class="mu">¡Sesión completada!</p></div><button class="btn" onclick="go(tab)">Terminar</button>`;Q=null;return}
-const q=Q.q[Q.i];a.innerHTML=`<div class="bar"><i style="width:${Q.i/Q.q.length*100}%"></i></div><div class="card" style="margin-top:16px"><div class="mu">${Q.i+1}/${Q.q.length}</div><div class="big">${q.pr} <button class="sp" onclick="say(\`${q.sp.replace(/`/g,"")}\`)">🔊</button></div><div class="mu">${q.sub}</div></div><div id="o">${q.op.map((o,i)=>`<button class="opt" onclick="pick(${i})">${o}</button>`).join("")}</div><div id="f"></div>`}
+a.innerHTML=hdr()+`<div class="card" style="text-align:center"><div class="big">🎉 ${Q.ok} / ${Q.q.length}</div><p class="mu">¡Sesión completada!</p></div><button class="btn" onclick="go(tab)">Terminar</button>`;Q=null;return}
+const q=Q.q[Q.i];a.innerHTML=`<div class="bar"><i style="width:${Q.i/Q.q.length*100}%"></i></div><div class="card" style="margin-top:16px"><div class="mu">${Q.i+1}/${Q.q.length}</div><div class="big">${q.pr} <button class="sp" onclick="say(\`${q.sp.replace(/`/g,"")}\`)">🔊</button></div><div class="mu">${q.sub}</div></div><div id="o">${q.op.map((o,i)=>`<button class="opt" onclick="pick(${i})">${o}</button>`).join("")}</div><div id="f"></div>`;if(q.auto)say(q.sp)}
 function pick(i){const q=Q.q[Q.i],bs=document.querySelectorAll(".opt"),good=q.op[i]==q.an;
 bs.forEach((b,j)=>{b.disabled=true;if(q.op[j]==q.an)b.classList.add("ok");else if(j==i)b.classList.add("no")});
-if(good){Q.ok++;s.xp+=10;s.known[q.k]=(s.known[q.k]||0)+1}else s.known[q.k]=Math.max(0,(s.known[q.k]||0)-1)||0;
-save();say(q.an.length<40?q.an:q.sp);
+if(good){Q.ok++;s.xp+=10;if(!q.ng)s.known[q.k]=(s.known[q.k]||0)+1}else if(!q.ng)s.known[q.k]=Math.max(0,(s.known[q.k]||0)-1)||0;
+save();say(q.say||(q.an.length<40?q.an:q.sp));
 $("f").innerHTML=`<p class="mu">${good?"✅ ¡Correcto!":"❌ Era: "+q.an} — ${q.info}</p><button class="btn" onclick="Q.i++;draw()">Continuar</button>`}
+const cap=x=>x[0].toUpperCase()+x.slice(1),R=a=>a[Math.random()*a.length|0],LV=[[0,20],[10,100],[100,1000],[1000,9999]];let lv=1;
+const SUBJ=[["I","am","do","have"],["You","are","do","have"],["He","is","does","has"],["She","is","does","has"],["It","is","does","has"],["We","are","do","have"],["They","are","do","have"]];
+const ON=["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"],TN=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+function n2w(n){if(n<20)return ON[n];if(n<100)return TN[n/10|0]+(n%10?"-"+ON[n%10]:"");if(n<1000)return ON[n/100|0]+" hundred"+(n%100?" "+n2w(n%100):"");return n2w(n/1000|0)+" thousand"+(n%1000?" "+n2w(n%1000):"")}
+function mk(pr,an,op,full,info){return{pr,sub:"Completa la oración",op:sh(op),an,k:"g"+pr,sp:full,say:full,info:full+" — "+info,ng:1}}
+function gq(){const t=R(["be","be","do","do","have","there"]),s=R(SUBJ),sl=s[0]=="I"?"I":s[0].toLowerCase(),m=Math.random();
+if(t=="be"){const r=R(["a student","happy","from Mexico","at home","tired","in the park","ready","a teacher"]),i="I→am · he/she/it→is · you/we/they→are";
+if(m<.35)return mk(`${s[0]} ___ ${r}.`,s[1],["am","is","are"],`${s[0]} ${s[1]} ${r}.`,i);
+if(m<.7)return mk(`___ ${sl} ${r}?`,cap(s[1]),["Am","Is","Are"],`${cap(s[1])} ${sl} ${r}?`,i);
+return mk(`${s[0]} ___ not ${r}.`,s[1],["am","is","are"],`${s[0]} ${s[1]} not ${r}.`,i)}
+if(t=="do"){const v=R(["like music","work here","speak English","live here","play soccer","eat meat","study at night"]),i="he/she/it→does · los demás→do · luego el verbo sin -s";
+if(m<.35)return mk(`___ ${sl} ${v}?`,cap(s[2]),["Do","Does"],`${cap(s[2])} ${sl} ${v}?`,i);
+if(m<.7)return mk(`${s[0]} ___ not ${v}.`,s[2],["do","does"],`${s[0]} ${s[2]} not ${v}.`,i);
+const[b,t3]=R([["run","runs"],["work","works"],["study","studies"],["cook","cooks"],["walk","walks"],["sleep","sleeps"]]),a=s[2]=="does"?t3:b;
+return mk(`${s[0]} ___ every day.`,a,[b,t3],`${s[0]} ${a} every day.`,"he/she/it→verbo + s")}
+if(t=="have"){const o=R(["a dog","a car","a brother","a new phone","a big family"]);return mk(`${s[0]} ___ ${o}.`,s[3],["have","has"],`${s[0]} ${s[3]} ${o}.`,"he/she/it→has · los demás→have")}
+const n=R([1,2,3,5]),[g,p]=R([["book","books"],["apple","apples"],["chair","chairs"],["student","students"]]);
+return mk(`There ___ ${n==1?"one "+g:n+" "+p} in the room.`,n==1?"is":"are",["is","are"],`There ${n==1?"is":"are"} ${n==1?"one "+g:n+" "+p} in the room.`,"is→uno · are→varios")}
+function nq(){const[a,b]=LV[lv],n=a+Math.random()*(b-a+1)|0,w=n2w(n),c=new Set([n+1,n-1,n+10,n-10,n%100>12&&n%100<20?n-n%100+(n%10)*10:n+2]);
+while(c.size<8)c.add(a+Math.random()*(b-a+1)|0);const d=sh([...c].filter(x=>x!=n&&x>=a&&x<=b)).slice(0,3),m=Math.random()*3|0;
+const q={k:"n"+n,sp:w,say:w,ng:1,info:n+" = "+w};
+if(m==0)return{...q,pr:String(n),sub:"Elige cómo se escribe",op:sh([w,...d.map(n2w)]),an:w};
+return{...q,pr:m==1?w:"🔊 Escucha",sub:m==1?"Elige el número":"¿Qué número escuchaste?",op:sh([n,...d].map(String)),an:String(n),auto:m==2}}
+const startG=()=>{Q={i:0,ok:0,q:Array.from({length:10},gq)};draw()},startN=()=>{Q={i:0,ok:0,q:Array.from({length:10},nq)};draw()};
 draw();
 </script></body></html>
