@@ -17,6 +17,8 @@ jobs:
           java-version: 17
       - run: npm install
       - run: npx cap add android
+      - name: Permitir motor de voz (TTS)
+        run: sed -i 's#<application#<queries><intent><action android:name="android.intent.action.TTS_SERVICE"/></intent></queries>\n    <application#' android/app/src/main/AndroidManifest.xml
       - run: npx cap sync android
       - name: Build debug APK
         working-directory: android
